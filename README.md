@@ -1,2 +1,3 @@
-# fakegpt
-Fake your own AI chat bot
+# FakeGPT
+
+Fake your own AI chatbot
