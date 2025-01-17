@@ -1,6 +1,79 @@
 body {
-    font-family: ui-sans-serif,-apple-system,system-ui,Segoe UI,Helvetica,Apple Color Emoji,Arial,sans-serif,Segoe UI Emoji,Segoe UI Symbol;
+    font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;
+    font-size: 0.9em;
+    color: #222;
 }
+
+.gpt-icon {
+    display: inline-block;
+    border-radius: 60px;
+    box-shadow: 0 0 2px #999;
+    padding: 0.4em 0.5em 0.35em 0.5em;
+    float: left;
+    margin-right: 1.5em;
+}
+
+.gpt-icon svg {
+    width: 1.3em;
+    height: 1.3em;
+}
+
+#navigation {
+    padding: 0.5em;
+}
+
+#content {
+    padding-top: 0.5em;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#chat {
+    /*border: 1px solid #f0f0f0;*/
+    padding: 0.5em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    overflow-y: auto;
+}
+
+#chat > * {
+    padding-top: 2em;
+    padding-bottom: 2em;
+}
+
+.question {
+    background-color: #f6f6f6;
+    border-radius: 25px;
+    padding-top: 1.2em;
+    padding-right: 1.2em;
+    padding-left: 1.2em;
+    padding-bottom: 1.2em;
+    max-width: 80%;
+    width: 100px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.answer-text {
+    margin-left: 4em;
+    line-height: 1.8em;
+}
+
+#prompt {
+    padding-top: 1em;
+}
+
+#footer {
+    padding: 0.5em;
+    font-size: 0.8em;
+    color: #666;
+    text-align: center;
+}
+
 button {
     border: none;
     background: none;
@@ -13,21 +86,12 @@ button {
     vertical-align: middle;
 }
 
-.gpt-icon {
-    display: inline-block;
-    border-radius: 60px;
-    box-shadow: 0 0 2px #999;
-    padding: 0.4em 0.5em 0.35em 0.5em;
-}
-
-.gpt-icon svg {
-    width: 1.3em;
-    height: 1.3em;
-}
-
 #query-box {
     background-color: #f0f0f0;
-    border-radius: 60px;
+    border-radius: 25px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 input#query {
@@ -35,6 +99,31 @@ input#query {
     display: block;
     background: none;
     border: none;
+    padding: 1em;
     margin-left: auto;
     margin-right: auto;
+    font-size: 1.1em;
+}
+
+input#query:focus {
+    outline: none;
+}
+
+
+#query-box button {
+    padding-top: 1em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-bottom: 1em;
+}
+
+button#send-query {
+    float: right;
+}
+
+#empty-chat {
+    padding: 1em;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 600;
 }
