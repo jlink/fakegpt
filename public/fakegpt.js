@@ -1,5 +1,9 @@
-let clicks = 0;
+const questionTemplate = document.getElementById('question-template');
+const answerTemplate = document.getElementById('answer-template');
 
-document.getElementById('myButton').addEventListener('click', function() {
-    document.getElementById('notification').innerHTML = 'Clicked: ' + ++clicks;
+const chat = document.getElementById('chat');
+
+document.getElementById('send-query').addEventListener('click', function() {
+    chat.appendChild(questionTemplate.content.cloneNode(true));
+    chat.appendChild(answerTemplate.content.cloneNode(true));
 });

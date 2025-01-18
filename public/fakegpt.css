@@ -64,7 +64,7 @@ div#chat:empty + div#empty-chat {
 
 #chat > * {
     padding-top: 2em;
-    padding-bottom: 2em;
+    padding-bottom: 1em;
 }
 
 .question {
@@ -86,6 +86,25 @@ div#chat:empty + div#empty-chat {
     font-size: 1rem;
     margin-left: 4em;
     line-height: 1.8em;
+}
+
+#chat .answer-tools {
+    visibility: hidden;
+    padding-top: 1em;
+    padding-bottom: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 4em;
+}
+
+#chat .answer:hover .answer-tools,
+#chat .answer:last-child .answer-tools
+{
+    visibility: visible;
+}
+
+#chat .answer-tools img {
+    height: 1.5em;
 }
 
 #prompt {
