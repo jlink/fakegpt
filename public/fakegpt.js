@@ -1,17 +1,32 @@
 let answers = 0;
 
+const queryToAnswers = {
+    'Johannes': [
+        '<em>Johannes Link</em> ist ein bekannter deutscher Softwareentwickler. ',
+        'Mit seinen Beiträgen zu testgetriebener Entwicklung und JUnit hat ',
+        'er die Softwareentwicklung in Deutschland maßgeblich beeinflusst.',
+        '<br/>Außerdem ist er bekannt für das verbreitete Property-based Testing ' +
+        'Framework <a href="https://jqwik.net">Jqwik</a> und ' +
+        'seiner kritischen Haltung zum digitalen Kapitalismus.'
+    ]
+}
+
+const defaultAnswer = [
+    'Was soll ich mit so einer Frage anfangen?'
+]
+
 const questionTemplate = document.getElementById('question-template');
 const answerTemplate = document.getElementById('answer-template');
 
 const chat = document.getElementById('chat');
 
 const scrollDown = document.getElementById('scroll-down');
-scrollDown.addEventListener('click', function() {
+scrollDown.addEventListener('click', function () {
     chat.scrollTop = chat.scrollHeight; // scroll to the bottom
 });
 
-const queryText = document.getElementById('query');
-queryText.addEventListener('keypress', function (event) {
+const queryTextElement = document.getElementById('query');
+queryTextElement.addEventListener('keypress', function (event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         submitQuery();
@@ -21,33 +36,50 @@ queryText.addEventListener('keypress', function (event) {
 const sendQueryButton = document.getElementById('send-query');
 sendQueryButton.addEventListener('click', submitQuery);
 
+function findAnswers(queryText) {
+    const matchingKey = Object.keys(queryToAnswers).find(function (key) {
+        return queryText.includes(key);
+    });
+    if (matchingKey) {
+        return queryToAnswers[matchingKey];
+    } else {
+        return defaultAnswer;
+    }
+}
+
 function submitQuery() {
-    if (queryText.value.trim() === '') {
+    if (queryTextElement.value.trim() === '') {
+        queryTextElement.value = '';
+        queryTextElement.focus();
         return;
     }
     chat.removeEventListener('scroll', onScroll);
     const newQuestionElement = questionTemplate.content.cloneNode(true);
-    newQuestionElement.querySelector('.question').textContent = queryText.value;
+    const queryText = queryTextElement.value;
+    newQuestionElement.querySelector('.question').textContent = queryText;
     chat.appendChild(newQuestionElement);
     const newAnswer = answerTemplate.content.cloneNode(true);
     const answerId = 'answer-' + ++answers;
     newAnswer.querySelector('.answer-text').id = answerId;
     chat.appendChild(newAnswer);
 
-    queryText.value = '';
-    chat.scrollTop = chat.scrollHeight; // scroll to the bottom
+    queryTextElement.value = '';
 
-    setTimeout(function() {
+    setTimeout(function () {
         const answerElement = document.getElementById(answerId);
-        answerQuestion(answerElement, [
-            `This is a fake answer for the question: <code>${answerId}</code>`,
-            '<br>This is the second line of the answer',
-            '<h3>A headline</h3>',
-            'This is the third line of the answer',
-        ]);
+        const answers = findAnswers(queryText);
+        answerQuestion(answerElement, answers);
         showOrHideScrollButton(chat);
         chat.addEventListener('scroll', onScroll);
     }, 500);
+}
+
+function appendAnswer(answerElement, answer, doAfter) {
+    const nextParagraph = document.createElement('template');
+    nextParagraph.innerHTML = answer;
+    answerElement.appendChild(nextParagraph.content);
+    chat.scrollTop = chat.scrollHeight;
+    doAfter();
 }
 
 function answerQuestion(answerElement, answers) {
@@ -55,19 +87,18 @@ function answerQuestion(answerElement, answers) {
         return;
     }
     const answer = answers.shift();
-    const nextParagraph = document.createElement('template');
-    nextParagraph.innerHTML = answer;
-    answerElement.appendChild(nextParagraph.content);
-    const timeout = randomInt(200, 1000);
-    setTimeout(function() {
-        answerQuestion(answerElement, answers);
-    }, timeout);
+
+    appendAnswer(answerElement, answer, function () {
+        const timeout = randomInt(200, 700);
+        setTimeout(function () {
+            answerQuestion(answerElement, answers);
+        }, timeout);
+    });
 }
 
 function randomInt(min, max) {
     return Math.random() * (max - min) + min
 }
-
 
 
 function showOrHideScrollButton(container) {
@@ -80,6 +111,6 @@ function showOrHideScrollButton(container) {
     }
 }
 
-const onScroll= function (event) {
+const onScroll = function (event) {
     showOrHideScrollButton(event.target);
 }
