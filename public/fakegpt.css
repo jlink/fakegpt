@@ -75,7 +75,7 @@ div#chat:empty + div#empty-chat {
     padding-left: 1.2em;
     padding-bottom: 1.2em;
     max-width: 80%;
-    width: 100px;
+    width: fit-content;
     margin-top: 1em;
     margin-bottom: 1em;
     margin-right: 0;
