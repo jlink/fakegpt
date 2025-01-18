@@ -7,15 +7,15 @@ body {
 .gpt-icon {
     display: inline-block;
     border-radius: 60px;
-    box-shadow: 0 0 2px #999;
+    box-shadow: 0 0 1px #999;
     padding: 0.4em 0.5em 0.35em 0.5em;
     float: left;
     margin-right: 1.5em;
 }
 
 .gpt-icon svg {
-    width: 1.3em;
-    height: 1.3em;
+    width: 1.1em;
+    height: 1.1em;
 }
 
 #navigation {
@@ -37,7 +37,7 @@ button#choose-model {
 
 #content {
     padding-top: 0.5em;
-    max-width: 800px;
+    max-width: 850px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -105,6 +105,17 @@ div#chat:empty + div#empty-chat {
 
 #chat .answer-tools img {
     height: 1.5em;
+}
+
+#scroll-down {
+    position: relative;
+    left: 45%;
+    top: 0;
+    visibility: hidden;
+}
+
+#scroll-down img {
+    width: 3em;
 }
 
 #prompt {
