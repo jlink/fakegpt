@@ -1,6 +1,6 @@
 body {
     font-family: ui-sans-serif, -apple-system, system-ui, Segoe UI, Helvetica, Apple Color Emoji, Arial, sans-serif, Segoe UI Emoji, Segoe UI Symbol;
-    font-size: 0.9em;
+    font-size: 1rem;
     color: #222;
 }
 
@@ -19,7 +19,20 @@ body {
 }
 
 #navigation {
-    padding: 0.5em;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #777;
+}
+
+#navigation button {
+    padding-top: 0.5em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+button#choose-model {
+    margin-bottom: 0.2em;
 }
 
 #content {
@@ -70,6 +83,7 @@ div#chat:empty + div#empty-chat {
 }
 
 .answer-text {
+    font-size: 1rem;
     margin-left: 4em;
     line-height: 1.8em;
 }
@@ -106,7 +120,7 @@ button {
 }
 
 input#query {
-    width: 90%;
+    width: 95%;
     display: block;
     background: none;
     border: none;
@@ -120,8 +134,11 @@ input#query:focus {
     outline: none;
 }
 
+#query-tools {
+    margin-left: 0.5em;
+}
 
-#query-box button {
+#query-tools button {
     padding-top: 1em;
     padding-right: 0.5em;
     padding-left: 0.5em;
@@ -130,6 +147,10 @@ input#query:focus {
 
 button#send-query {
     float: right;
+}
+
+button#send-query img {
+    width: 2.5em;
 }
 
 #empty-chat {
