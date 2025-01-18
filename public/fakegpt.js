@@ -1,3 +1,5 @@
+let answers = 0;
+
 const questionTemplate = document.getElementById('question-template');
 const answerTemplate = document.getElementById('answer-template');
 
@@ -27,10 +29,18 @@ function submitQuery() {
     const newQuestionElement = questionTemplate.content.cloneNode(true);
     newQuestionElement.querySelector('.question').textContent = queryText.value;
     chat.appendChild(newQuestionElement);
-    chat.appendChild(answerTemplate.content.cloneNode(true));
-    showOrHideScrollButton(chat);
-    chat.addEventListener('scroll', onScroll);
+    const newAnswer = answerTemplate.content.cloneNode(true);
+    const answerId = 'answer-' + ++answers;
+    newAnswer.querySelector('.answer-text').id = answerId;
+    chat.appendChild(newAnswer);
     queryText.value = '';
+
+    setTimeout(function() {
+        const answer = document.getElementById(answerId);
+        answer.textContent = 'Loading...';
+        showOrHideScrollButton(chat);
+        chat.addEventListener('scroll', onScroll);
+    }, 100);
 }
 
 
