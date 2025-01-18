@@ -88,6 +88,11 @@ div#chat:empty + div#empty-chat {
     line-height: 1.8em;
 }
 
+.answer-text > * {
+    margin-top: 0;
+    padding-top: 0;
+}
+
 #chat .answer-tools {
     visibility: hidden;
     padding-top: 1em;

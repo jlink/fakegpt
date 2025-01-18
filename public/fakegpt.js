@@ -7,7 +7,7 @@ const chat = document.getElementById('chat');
 
 const scrollDown = document.getElementById('scroll-down');
 scrollDown.addEventListener('click', function() {
-    chat.scrollTop = chat.scrollHeight;
+    chat.scrollTop = chat.scrollHeight; // scroll to the bottom
 });
 
 const queryText = document.getElementById('query');
@@ -36,11 +36,14 @@ function submitQuery() {
     queryText.value = '';
 
     setTimeout(function() {
+        chat.scrollTop = chat.scrollHeight; // scroll to the bottom
         const answer = document.getElementById(answerId);
-        answer.textContent = 'Loading...';
+        const nextParagraph = document.createElement('p');
+        nextParagraph.textContent = 'This is a fake answer for the question: ' + answerId;
+        answer.appendChild(nextParagraph);
         showOrHideScrollButton(chat);
         chat.addEventListener('scroll', onScroll);
-    }, 100);
+    }, 500);
 }
 
 
