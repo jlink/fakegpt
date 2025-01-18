@@ -33,18 +33,41 @@ function submitQuery() {
     const answerId = 'answer-' + ++answers;
     newAnswer.querySelector('.answer-text').id = answerId;
     chat.appendChild(newAnswer);
+
     queryText.value = '';
+    chat.scrollTop = chat.scrollHeight; // scroll to the bottom
 
     setTimeout(function() {
-        chat.scrollTop = chat.scrollHeight; // scroll to the bottom
-        const answer = document.getElementById(answerId);
-        const nextParagraph = document.createElement('p');
-        nextParagraph.textContent = 'This is a fake answer for the question: ' + answerId;
-        answer.appendChild(nextParagraph);
+        const answerElement = document.getElementById(answerId);
+        answerQuestion(answerElement, [
+            `This is a fake answer for the question: <code>${answerId}</code>`,
+            '<br>This is the second line of the answer',
+            '<h3>A headline</h3>',
+            'This is the third line of the answer',
+        ]);
         showOrHideScrollButton(chat);
         chat.addEventListener('scroll', onScroll);
     }, 500);
 }
+
+function answerQuestion(answerElement, answers) {
+    if (answers.length === 0) {
+        return;
+    }
+    const answer = answers.shift();
+    const nextParagraph = document.createElement('template');
+    nextParagraph.innerHTML = answer;
+    answerElement.appendChild(nextParagraph.content);
+    const timeout = randomInt(200, 1000);
+    setTimeout(function() {
+        answerQuestion(answerElement, answers);
+    }, timeout);
+}
+
+function randomInt(min, max) {
+    return Math.random() * (max - min) + min
+}
+
 
 
 function showOrHideScrollButton(container) {
