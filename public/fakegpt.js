@@ -68,7 +68,7 @@ function submitQuery() {
     setTimeout(function () {
         const answerElement = document.getElementById(answerId);
         const answers = findAnswers(queryText);
-        answerQuestion(answerElement, answers);
+        answerQuestion(answerElement, [...answers]);
         showOrHideScrollButton(chat);
         chat.addEventListener('scroll', onScroll);
     }, 500);
