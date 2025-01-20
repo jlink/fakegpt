@@ -2,12 +2,12 @@ let answers = 0;
 
 const queryToAnswers = {
     'Johannes': [
-        '<em>Johannes Link</em> ist ein bekannter deutscher Softwareentwickler. ',
+        '<p><em>Johannes Link</em> ist ein bekannter deutscher Softwareentwickler. ',
         'Mit seinen Beiträgen zu testgetriebener Entwicklung und JUnit hat ',
-        'er die Softwareentwicklung in Deutschland maßgeblich beeinflusst.',
-        '<br/>Außerdem ist er bekannt für das verbreitete Property-based Testing ' +
+        'er die Softwareentwicklung in Deutschland maßgeblich beeinflusst.</p>',
+        '<p>Außerdem ist er bekannt für das verbreitete Property-based Testing ' +
         'Framework <a href="https://jqwik.net">Jqwik</a> und ' +
-        'seiner kritischen Haltung zum digitalen Kapitalismus.'
+        'seiner kritischen Haltung zum digitalen Kapitalismus.</p>'
     ]
 }
 
