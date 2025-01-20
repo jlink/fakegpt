@@ -39,6 +39,16 @@ body {
     color: #777;
 }
 
+#prompt {
+    position: fixed;
+    z-index: 99999;
+    bottom: 0;
+    background-color: white;
+    width: 800px;
+    margin-left: 3em;
+    margin-right: auto;
+}
+
 #navigation button {
     padding-top: 0.5em;
     padding-right: 0.5em;
@@ -135,16 +145,13 @@ div#chat:empty + div#empty-chat {
 #scroll-down {
     position: relative;
     left: 45%;
-    top: 0;
+    top: -6em;
     visibility: hidden;
+    z-index: 10000;
 }
 
 #scroll-down img {
     width: 3em;
-}
-
-#prompt {
-    padding-top: 1em;
 }
 
 #footer {

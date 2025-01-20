@@ -76,8 +76,6 @@ async function submitQuery() {
     await answerQuestion(answerElement, [...answers]);
     answerElement.classList.remove("in-progress");
 
-    document.documentElement.scrollTop = document.documentElement.scrollHeight;
-
     showOrHideScrollButton(chat);
     chat.addEventListener('scroll', onScroll);
 }
