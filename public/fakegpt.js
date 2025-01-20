@@ -22,7 +22,8 @@ const chat = document.getElementById('chat');
 
 const scrollDown = document.getElementById('scroll-down');
 scrollDown.addEventListener('click', function () {
-    chat.scrollTop = chat.scrollHeight; // scroll to the bottom
+    console.log("Scrolling down");
+    document.documentElement.scrollTop = document.documentElement.scrollHeight;
 });
 
 const queryTextElement = document.getElementById('query');
@@ -49,12 +50,14 @@ function findAnswers(queryText) {
 }
 
 async function submitQuery() {
+
     if (queryTextElement.value.trim() === '') {
         queryTextElement.value = '';
         queryTextElement.focus();
         return;
     }
-    chat.removeEventListener('scroll', onScroll);
+
+    removeScrollingListener();
     const newQuestionElement = questionTemplate.content.cloneNode(true);
     const queryText = queryTextElement.value;
     newQuestionElement.querySelector('.question').textContent = queryText;
@@ -76,8 +79,9 @@ async function submitQuery() {
     await answerQuestion(answerElement, [...answers]);
     answerElement.classList.remove("in-progress");
 
-    showOrHideScrollButton(chat);
-    chat.addEventListener('scroll', onScroll);
+    showOrHideScrollButton();
+
+    addScrollingListener();
 }
 
 async function sleep(ms) {
@@ -100,7 +104,7 @@ async function appendAnswer(answerElement, answer) {
             answerElement.removeChild(answerElement.lastChild);
         }
         answerElement.appendChild(nextParagraph.content);
-        chat.scrollTop = chat.scrollHeight;
+        document.documentElement.scrollTop = document.documentElement.scrollHeight;
     }
 }
 
@@ -122,7 +126,8 @@ function randomInt(min, max) {
 }
 
 
-function showOrHideScrollButton(container) {
+function showOrHideScrollButton() {
+    const container = document.documentElement;
     const limit = container.scrollHeight - container.clientHeight;
     const diff = Math.abs(container.scrollTop - limit);
     if (diff <= 10) {
@@ -132,6 +137,14 @@ function showOrHideScrollButton(container) {
     }
 }
 
-const onScroll = function (event) {
-    showOrHideScrollButton(event.target);
+function removeScrollingListener() {
+    document.removeEventListener('scroll', onScroll);
+}
+
+function addScrollingListener() {
+    document.addEventListener('scroll', onScroll);
+}
+
+const onScroll = function () {
+    showOrHideScrollButton();
 }
