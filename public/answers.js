@@ -1,16 +1,20 @@
 export default function findAnswers(queryText) {
-    const matchingKey = Object.keys(queryToAnswers).find(function (key) {
+    const matchingKey = Object.keys(answers).find(function (key) {
         const regex = new RegExp(key, 'i')
         return regex.test(queryText);
     });
     if (matchingKey) {
-        return queryToAnswers[matchingKey];
+        let answer = answers[matchingKey];
+        if (answer instanceof Function) {
+            return answer(queryText);
+        }
+        return answer;
     } else {
-        return defaultAnswer;
+        return defaultAnswer(queryText);
     }
 }
 
-const queryToAnswers = {
+const answers = {
     'Johannes': [
         `<p><span style="font-weight: bold">Johannes Link</span> ist ein bekannter deutscher Softwareentwickler. 
         Mit seinen Beiträgen zu testgetriebener Entwicklung und JUnit hat 
@@ -19,9 +23,18 @@ const queryToAnswers = {
         Framework <a href="https://jqwik.net">Jqwik</a> und
         seiner kritischen Haltung zum 
         <span style="font-weight: bold">digitalen Kapitalismus</span>.</p>`
-    ]
+    ],
+    'wer ist': function(query) {
+        const parts = query.split(' ');
+        const name = parts.at(parts.length - 1)
+        return [
+            `<p>Ich kenne nur wichtige Menschen. ${name} gehört nicht dazu!</p>`
+        ]
+    },
 }
 
-const defaultAnswer = [
-    '<p>Was soll ich mit so einer Frage anfangen?</p>'
-]
+function defaultAnswer(query) {
+    return [
+        `<p>Was soll ich mit "${query}" als Frage anfangen?</p>`
+    ]
+}
