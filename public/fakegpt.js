@@ -1,19 +1,6 @@
+import findAnswers from "./answers.js";
+
 let countAnswersInChat = 0;
-
-const queryToAnswers = {
-    'Johannes': [
-        `<p><em>Johannes Link</em> ist ein bekannter deutscher Softwareentwickler. 
-        Mit seinen Beiträgen zu testgetriebener Entwicklung und JUnit hat 
-        er die Softwareentwicklung in Deutschland maßgeblich beeinflusst.</p>`,
-        `<p>Außerdem ist er bekannt für das verbreitete Property-based Testing 
-        Framework <a href="https://jqwik.net">Jqwik</a> und
-        seiner kritischen Haltung zum digitalen Kapitalismus.</p>`
-    ]
-}
-
-const defaultAnswer = [
-    '<p>Was soll ich mit so einer Frage anfangen?</p>'
-]
 
 const questionTemplate = document.getElementById('question-template');
 const answerTemplate = document.getElementById('answer-template');
@@ -36,18 +23,6 @@ queryTextElement.addEventListener('keypress', function (event) {
 
 const sendQueryButton = document.getElementById('send-query');
 sendQueryButton.addEventListener('click', submitQuery);
-
-function findAnswers(queryText) {
-    const matchingKey = Object.keys(queryToAnswers).find(function (key) {
-        const regex = new RegExp(key, 'i')
-        return regex.test(queryText);
-    });
-    if (matchingKey) {
-        return queryToAnswers[matchingKey];
-    } else {
-        return defaultAnswer;
-    }
-}
 
 async function submitQuery() {
 
@@ -93,7 +68,7 @@ async function appendAnswer(answerElement, answer) {
     let childrenToKeep = answerElement.childNodes.length;
     let html = "";
     for (let piece of pieces) {
-        await sleep(50)
+        await sleep(40)
 
         html += piece + ' ';
         const nextParagraph = document.createElement('template');
@@ -116,7 +91,7 @@ async function answerQuestion(answerElement, answers) {
 
     await appendAnswer(answerElement, answer);
 
-    const timeout = randomInt(500, 1000);
+    const timeout = randomInt(300, 800);
     await sleep(timeout);
     await answerQuestion(answerElement, answers);
 }
