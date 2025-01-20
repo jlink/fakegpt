@@ -2,12 +2,12 @@ let answers = 0;
 
 const queryToAnswers = {
     'Johannes': [
-        '<p><em>Johannes Link</em> ist ein bekannter deutscher Softwareentwickler. ',
-        'Mit seinen Beiträgen zu testgetriebener Entwicklung und JUnit hat ',
-        'er die Softwareentwicklung in Deutschland maßgeblich beeinflusst.</p>',
-        '<p>Außerdem ist er bekannt für das verbreitete Property-based Testing ' +
-        'Framework <a href="https://jqwik.net">Jqwik</a> und ' +
-        'seiner kritischen Haltung zum digitalen Kapitalismus.</p>'
+        `<p><em>Johannes Link</em> ist ein bekannter deutscher Softwareentwickler. 
+        Mit seinen Beiträgen zu testgetriebener Entwicklung und JUnit hat 
+        er die Softwareentwicklung in Deutschland maßgeblich beeinflusst.</p>`,
+        `<p>Außerdem ist er bekannt für das verbreitete Property-based Testing 
+        Framework <a href="https://jqwik.net">Jqwik</a> und
+        seiner kritischen Haltung zum digitalen Kapitalismus.</p>`
     ]
 }
 
@@ -89,7 +89,7 @@ function answerQuestion(answerElement, answers) {
     const answer = answers.shift();
 
     appendAnswer(answerElement, answer, function () {
-        const timeout = randomInt(200, 700);
+        const timeout = randomInt(500, 1000);
         setTimeout(function () {
             answerQuestion(answerElement, answers);
         }, timeout);
