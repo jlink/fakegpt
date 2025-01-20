@@ -117,6 +117,11 @@ div#chat:empty + div#empty-chat {
     visibility: visible;
 }
 
+#chat .answer:last-child .answer-text.in-progress + .answer-tools
+{
+    visibility: hidden;
+}
+
 #chat .answer-tools img {
     height: 1.5em;
 }

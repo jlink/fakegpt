@@ -1,4 +1,4 @@
-let answers = 0;
+let countAnswersInChat = 0;
 
 const queryToAnswers = {
     'Johannes': [
@@ -17,7 +17,6 @@ const defaultAnswer = [
 
 const questionTemplate = document.getElementById('question-template');
 const answerTemplate = document.getElementById('answer-template');
-const dotTemplate = document.getElementById('dot-template');
 
 const chat = document.getElementById('chat');
 
@@ -39,7 +38,8 @@ sendQueryButton.addEventListener('click', submitQuery);
 
 function findAnswers(queryText) {
     const matchingKey = Object.keys(queryToAnswers).find(function (key) {
-        return queryText.includes(key);
+        const regex = new RegExp(key, 'i')
+        return regex.test(queryText);
     });
     if (matchingKey) {
         return queryToAnswers[matchingKey];
@@ -48,7 +48,7 @@ function findAnswers(queryText) {
     }
 }
 
-function submitQuery() {
+async function submitQuery() {
     if (queryTextElement.value.trim() === '') {
         queryTextElement.value = '';
         queryTextElement.focus();
@@ -60,57 +60,61 @@ function submitQuery() {
     newQuestionElement.querySelector('.question').textContent = queryText;
     chat.appendChild(newQuestionElement);
     const newAnswer = answerTemplate.content.cloneNode(true);
-    const answerId = 'answer-' + ++answers;
+    const answerId = 'answer-' + ++countAnswersInChat;
     newAnswer.querySelector('.answer-text').id = answerId;
     chat.appendChild(newAnswer);
 
     queryTextElement.value = '';
 
-    setTimeout(function () {
-        const answerElement = document.getElementById(answerId);
-        const answers = findAnswers(queryText);
-        answerQuestion(answerElement, [...answers]);
-        showOrHideScrollButton(chat);
-        chat.addEventListener('scroll', onScroll);
-    }, 500);
+    // Initial "thinking" time
+    await sleep(500);
+
+    const answerElement = document.getElementById(answerId);
+    const answers = findAnswers(queryText);
+
+    answerElement.classList.add("in-progress");
+    await answerQuestion(answerElement, [...answers]);
+    answerElement.classList.remove("in-progress");
+
+    showOrHideScrollButton(chat);
+    chat.addEventListener('scroll', onScroll);
 }
 
 async function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
-async function appendAnswer(answerElement, answer, doAfter) {
+async function appendAnswer(answerElement, answer) {
     const pieces = answer.split(' ');
     let childrenToKeep = answerElement.childNodes.length;
     let html = "";
     for (let piece of pieces) {
         await sleep(50)
+
         html += piece + ' ';
         const nextParagraph = document.createElement('template');
         nextParagraph.innerHTML = html;
-        console.log(nextParagraph.childNodes)
+
         // Remove all children at the end but those that were identified to keep
-        while(answerElement.childNodes.length > childrenToKeep) {
+        while (answerElement.childNodes.length > childrenToKeep) {
             answerElement.removeChild(answerElement.lastChild);
         }
         answerElement.appendChild(nextParagraph.content);
         chat.scrollTop = chat.scrollHeight;
     }
-    doAfter();
 }
 
-function answerQuestion(answerElement, answers) {
+async function answerQuestion(answerElement, answers) {
     if (answers.length === 0) {
         return;
     }
     const answer = answers.shift();
 
-    appendAnswer(answerElement, answer, function () {
-        const timeout = randomInt(500, 1000);
-        setTimeout(function () {
-            answerQuestion(answerElement, answers);
-        }, timeout);
-    });
+    await appendAnswer(answerElement, answer);
+
+    const timeout = randomInt(500, 1000);
+    await sleep(timeout);
+    await answerQuestion(answerElement, answers);
 }
 
 function randomInt(min, max) {
