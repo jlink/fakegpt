@@ -12,11 +12,12 @@ const queryToAnswers = {
 }
 
 const defaultAnswer = [
-    'Was soll ich mit so einer Frage anfangen?'
+    '<p>Was soll ich mit so einer Frage anfangen?</p>'
 ]
 
 const questionTemplate = document.getElementById('question-template');
 const answerTemplate = document.getElementById('answer-template');
+const dotTemplate = document.getElementById('dot-template');
 
 const chat = document.getElementById('chat');
 
@@ -74,11 +75,27 @@ function submitQuery() {
     }, 500);
 }
 
-function appendAnswer(answerElement, answer, doAfter) {
-    const nextParagraph = document.createElement('template');
-    nextParagraph.innerHTML = answer;
-    answerElement.appendChild(nextParagraph.content);
-    chat.scrollTop = chat.scrollHeight;
+async function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function appendAnswer(answerElement, answer, doAfter) {
+    const pieces = answer.split(' ');
+    let childrenToKeep = answerElement.childNodes.length;
+    let html = "";
+    for (let piece of pieces) {
+        await sleep(50)
+        html += piece + ' ';
+        const nextParagraph = document.createElement('template');
+        nextParagraph.innerHTML = html;
+        console.log(nextParagraph.childNodes)
+        // Remove all children at the end but those that were identified to keep
+        while(answerElement.childNodes.length > childrenToKeep) {
+            answerElement.removeChild(answerElement.lastChild);
+        }
+        answerElement.appendChild(nextParagraph.content);
+        chat.scrollTop = chat.scrollHeight;
+    }
     doAfter();
 }
 

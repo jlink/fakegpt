@@ -4,6 +4,15 @@ body {
     color: #222;
 }
 
+.dot {
+    height: 15px;
+    width: 15px;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: text-top;
+}
+
 .gpt-icon {
     display: inline-block;
     border-radius: 60px;
