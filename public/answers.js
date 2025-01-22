@@ -25,8 +25,9 @@ const answers = {
         <span style="font-weight: bold">digitalen Kapitalismus</span>.</p>`
     ],
     'wer ist': function(query) {
-        const parts = query.split(' ');
-        const name = parts.at(parts.length - 1).replaceAll('?', '');
+        const werIstRegex = /wer ist ([a-zA-Z\s]+)\\?|$/i;
+        const werIstMatch = query.match(werIstRegex);
+        const name = werIstMatch[1];
         return [
             `<p>Ich kenne nur wichtige Menschen. 
              <span style="font-weight: bold">${name}</span> gehört nicht dazu!</p>`
