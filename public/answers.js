@@ -26,9 +26,10 @@ const answers = {
     ],
     'wer ist': function(query) {
         const parts = query.split(' ');
-        const name = parts.at(parts.length - 1)
+        const name = parts.at(parts.length - 1).replaceAll('?', '');
         return [
-            `<p>Ich kenne nur wichtige Menschen. ${name} gehört nicht dazu!</p>`
+            `<p>Ich kenne nur wichtige Menschen. 
+             <span style="font-weight: bold">${name}</span> gehört nicht dazu!</p>`
         ]
     },
 }
