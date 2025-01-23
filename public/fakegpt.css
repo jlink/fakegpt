@@ -223,3 +223,25 @@ button#send-query img {
     font-size: 1.5em;
     font-weight: 600;
 }
+
+#thinking {
+    display: none;
+    margin-top: 0;
+    margin-left: 4.5em;
+    margin-right: 0;
+    margin-bottom: 1em;
+}
+
+.blinking_live {
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background: black;
+    animation: blink-live 0.5s cubic-bezier(0, 0.3, 0.7, 1) infinite;
+}
+
+@keyframes blink-live{
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
