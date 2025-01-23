@@ -224,6 +224,11 @@ button#send-query img {
     font-weight: 600;
 }
 
+.error {
+    color: red;
+    font-weight: bolder;
+}
+
 .thinking {
     display: none;
     margin-top: 0;

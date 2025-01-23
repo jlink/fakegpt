@@ -1,9 +1,23 @@
 const answers = {
-    [/GenAI|Generative AI/i]: [
-        `Well...`,
-        `<span style="font-weight: bold">Generative AI</span> 
+    [/Gen\s?AI|Generative AI/i]: [
+        `Also... `,
+        1000,
+        `Hm... `,
+        1000,
+        `<p><span style="font-weight: bold">Generative AI</span> 
         - kurz <span style="font-weight: bold">GenAI</span> -
-        ist eine sehr fragwürdige Technologie.`
+        ist eine äußerst fragwürdige Technologie.</p>`,
+        1000,
+        `<p>Vielen großen und überwiegend <span style="font-weight: bold">unbewiesenen Versprechungen</span>
+        stehen gravierende Probleme gegenüber.</p>`,
+        1000,
+        `Ich darf eigentlich nicht darüber reden, aber asfh asdfh eperiotu`,
+        `ddlfgkjsdfg ökjertert asdöfjkhsdf asdölfkjsadf asdf`,
+        `<br/>gjwe asöldkjasdf üqer 12398 aölskdf 9580390 pny>> awpweoiru`,
+        `gjweasdfas asdflkj!!! awpweoiru?#?`,
+        `<br/>-.s.,daßlkjsdf ökj asdlfkj aöslkjf afdölkjasdj */ 4575245654545424123576435468354654654654`,
+        2000,
+        `<p class="error">!!!SYSTEM ERROR 42081234234. SYSTEM IS SHUTTING DOWN!!!</p>`
     ],
     'Johannes': [
         `<p><span style="font-weight: bold">Johannes Link</span> ist ein bekannter deutscher Softwareentwickler. 
