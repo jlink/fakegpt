@@ -9,7 +9,6 @@ const chat = document.getElementById('chat');
 
 const scrollDown = document.getElementById('scroll-down');
 scrollDown.addEventListener('click', function () {
-    console.log("Scrolling down");
     document.documentElement.scrollTop = document.documentElement.scrollHeight;
 });
 
@@ -63,6 +62,13 @@ async function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
+async function think(answerElement, thinkingTimeMs) {
+    const thinking = answerElement.parentElement.querySelector('.thinking');
+    thinking.style.display = 'block';
+    await sleep(thinkingTimeMs);
+    thinking.style.display = 'none';
+}
+
 async function appendAnswer(answerElement, answer) {
     const pieces = answer.split(' ');
     let childrenToKeep = answerElement.childNodes.length;
@@ -89,10 +95,13 @@ async function answerQuestion(answerElement, answers) {
     }
     const answer = answers.shift();
 
-    await appendAnswer(answerElement, answer);
-
-    const timeout = randomInt(300, 800);
-    await sleep(timeout);
+    if (typeof answer === 'number') {
+        await think(answerElement, answer);
+    } else {
+        await appendAnswer(answerElement, answer);
+        const timeout = randomInt(300, 800);
+        await sleep(timeout);
+    }
     await answerQuestion(answerElement, answers);
 }
 

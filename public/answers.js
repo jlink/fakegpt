@@ -9,6 +9,7 @@ const answers = {
         `<p><span style="font-weight: bold">Johannes Link</span> ist ein bekannter deutscher Softwareentwickler. 
         Mit seinen Beiträgen zu testgetriebener Entwicklung und JUnit hat 
         er die Softwareentwicklung in Deutschland maßgeblich beeinflusst.</p>`,
+        2000,
         `<p>Außerdem ist er bekannt für das verbreitete Property-based Testing 
         Framework <a href="https://jqwik.net">Jqwik</a> und
         seiner kritischen Haltung zum 

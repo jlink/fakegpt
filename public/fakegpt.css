@@ -224,7 +224,7 @@ button#send-query img {
     font-weight: 600;
 }
 
-#thinking {
+.thinking {
     display: none;
     margin-top: 0;
     margin-left: 4.5em;
