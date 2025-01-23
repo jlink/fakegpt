@@ -1,5 +1,5 @@
 const answers = {
-    [/Gen\s?AI|Generative AI/i]: [
+    [/Gen\s?AI|Generativer? AI/i]: [
         `Also... `,
         1000,
         `Hm... `,
@@ -15,7 +15,7 @@ const answers = {
         `ddlfgkjsdfg ökjertert asdöfjkhsdf asdölfkjsadf asdf`,
         `<br/>gjwe asöldkjasdf üqer 12398 aölskdf 9580390 pny>> awpweoiru`,
         `gjweasdfas asdflkj!!! awpweoiru?#?`,
-        `<br/>-.s.,daßlkjsdf ökj asdlfkj aöslkjf afdölkjasdj */ 4575245654545424123576435468354654654654`,
+        `<br/>-.s.,daßlkjsdf ökj asdlfkj aöslkjf afdölkjasdj */ 45752 45654545424123576435468354654 654654`,
         2000,
         `<p class="error">!!!SYSTEM ERROR 42081234234. SYSTEM IS SHUTTING DOWN!!!</p>`
     ],
