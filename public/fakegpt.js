@@ -43,15 +43,22 @@ async function submitQuery() {
 
     queryTextElement.value = '';
 
+    const answerElement = document.getElementById(answerId);
+
+    // Hide answer tools
+    const answerTools = answerElement.parentElement.querySelector('.answer-tools');
+    answerTools.style.display = 'none';
+
     // Initial "thinking" time
     await sleep(500);
 
-    const answerElement = document.getElementById(answerId);
     const answers = findAnswers(queryText);
 
     answerElement.classList.add("in-progress");
     await answerQuestion(answerElement, [...answers]);
     answerElement.classList.remove("in-progress");
+
+    answerTools.style.display = 'block';
 
     showOrHideScrollButton();
 
