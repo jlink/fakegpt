@@ -1,8 +1,8 @@
 # FakeGPT
 
-Fake your own AI chatbot. 
+Fake your own AI chatbot with just Javascript and HTML. 
 
-A very basic configuration is deployed [here](https://fakegpt.johanneslink.net/).
+A very basic and German configuration is deployed [here](https://fakegpt.johanneslink.net/).
 Try the question: "Ist eine ethische Nutzung von Generative AI möglich?"
 
 
@@ -22,9 +22,15 @@ npm start
 
 Then move your browser to  http://localhost:3000.
 
+
+## Configuration of Texts
+
+The texts that are displayed on the page are configured in file `./public/configuration.js`.
+
+
 ## Configuration of Answers
 
-The answering logic resides in `src/answers.js`. You can modify the answers to your own needs.
+The answering logic resides in `./public/answers.js`. You can modify the answers to your own needs.
 
 The simplest way is to modify the `const answers` object that can have multiple properties.
 
