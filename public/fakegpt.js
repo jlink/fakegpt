@@ -1,4 +1,21 @@
 import findAnswers from "./answers.js";
+import configuration from "./configuration.js";
+
+function init() {
+    if (configuration.model)
+        document.getElementById('model').textContent = configuration.model;
+
+    if (configuration.firstPromptMessage)
+        document.getElementById('first-prompt').textContent = configuration.firstPromptMessage;
+
+    if (configuration.promptPlaceholder)
+        document.getElementById('query').placeholder = configuration.promptPlaceholder;
+
+    if (configuration.footer)
+        document.getElementById('footer').innerHTML = configuration.footer;
+}
+
+document.addEventListener('DOMContentLoaded', init);
 
 let countAnswersInChat = 0;
 
