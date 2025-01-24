@@ -1,0 +1,2 @@
+- function in answers value should get matching result as parameter instead of the query string
+- make a reasonable English configuration default, but deploy the German configuration to fakegpt.jl.net
