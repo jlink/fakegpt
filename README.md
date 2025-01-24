@@ -26,13 +26,13 @@ Then move your browser to  http://localhost:3000.
 ## Configuration of Texts
 
 The texts that are displayed on the page are configured in 
-file [configuration.js](`public/configuration.js`).
+file [configuration.js](./public/configuration.js).
 
 
 ## Configuration of Answers
 
 The answering logic resides in
-file [answers.js](`./public/answers.js`). You can modify the answers to your own needs.
+file [answers.js](./public/answers.js). You can modify the answers to your own needs.
 
 The simplest way is to modify the `const answers` object that can have multiple properties.
 
