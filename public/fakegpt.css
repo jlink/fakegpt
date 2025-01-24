@@ -33,7 +33,8 @@ body {
     top: 0;
     background-color: white;
     width: 100%;
-    margin-left: 1em;
+    margin-top: 0.5em;
+    margin-left: 0;
     font-size: 0.9rem;
     font-weight: 400;
     color: #777;
@@ -61,14 +62,20 @@ body {
 
 
 #navigation button {
+    font-weight: 100;
     padding-top: 0.5em;
-    padding-right: 0.5em;
-    padding-left: 0.5em;
+    padding-right: 0.1em;
+    padding-left: 0.7em;
     padding-bottom: 0.5em;
 }
 
-button#choose-model {
-    margin-bottom: 0.2em;
+button#choose-model svg path {
+    fill: grey;
+}
+
+#navigation button#choose-model {
+    font-weight: 500;
+    margin-bottom: 0.3em;
 }
 
 #content {
