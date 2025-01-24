@@ -49,6 +49,12 @@ const answers = {
     },
 }
 
+function defaultAnswer(query) {
+    return [
+        `<p>Was soll ich mit "${query}" als Frage anfangen?</p>`
+    ]
+}
+
 export default function findAnswers(queryText) {
     const matchingKey = findMatchingKey(queryText);
     if (matchingKey) {
@@ -88,11 +94,5 @@ function extractRegex(potentialRegex) {
     const pattern = potentialRegex.slice(firstSlash + 1, lastSlash);
     const flags = potentialRegex.slice(lastSlash + 1);
     return new RegExp(pattern, flags);
-
 }
 
-function defaultAnswer(query) {
-    return [
-        `<p>Was soll ich mit "${query}" als Frage anfangen?</p>`
-    ]
-}
