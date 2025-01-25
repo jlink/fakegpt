@@ -22,6 +22,15 @@ npm start
 
 Then move your browser to  http://localhost:3000.
 
+## Run with Docker
+
+   docker build -t fakegpt .
+   docker run -it --rm -p 3000:3000 fakegpt:latest
+   
+For overriding answers add a volume mount:
+
+   -v /path/to/your/answers.js:/app/public/answers.js
+
 
 ## Configuration of Texts
 
