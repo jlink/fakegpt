@@ -44,10 +44,13 @@ file [configuration.js](./public/configuration.js).
 
 ## Configuration of Answers
 
-The answering logic resides in
-file [answers.js](./public/answers.js). You can modify the answers to your own needs.
+The answering logic resides in file [answering.js](./public/answering.js)
+whereas the actual answer texts are in [answers.js](./public/answers.js). 
+You can either just modify the answer texts according to your own needs 
+or change the whole answering mechanism.
 
-The simplest way is to modify the `const answers` object that can have multiple properties.
+The simplest way is to modify the `const myAnswers` object in file [answering.js](./public/answering.js);
+it can have multiple properties.
 
 Therein, a property _key_ can represent either 
 - a regular expression within square brackets `[...]` 
@@ -61,7 +64,7 @@ A property is an array of answer _segments_. A segment can be:
 A few examples:
 
 ```javascript
-const answers = {
+const myAnswers = {
         "hello": [
             "Hello! How can I help you?",
             "Maybe you want to ask me something?"
@@ -72,7 +75,7 @@ const answers = {
 This will answer to any input that contains the word "hello" with the two given lines.
 
 ```javascript
-const answers = {
+const myAnswers = {
     [/hello|hallo/]: function (query) {
         if (query.toLowerCase().includes("hallo")) {
             return [

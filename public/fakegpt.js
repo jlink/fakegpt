@@ -1,4 +1,4 @@
-import findAnswers from "./answers.js";
+import findAnswers from "./answering.js";
 import configuration from "./configuration.js";
 
 function init() {
