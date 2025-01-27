@@ -92,4 +92,12 @@ This will answer to any input that contains the word "hello" or "hallo".
 If the input contains "hallo", the answer will be in German.
 
 If none of the regular expressions match, the function `defaultAnswer` will be invoked
-and its result used as answer.
+and its result used as answer. For example:
+
+```javascript
+export default function defaultAnswer(query) {
+    return [
+        `<p>I do not understand "${query}". What do you expect me to do?</p>`
+    ]
+}
+```
