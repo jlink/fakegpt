@@ -38,15 +38,13 @@ const myAnswers = {
         seiner kritischen Haltung zum 
         <span style="font-weight: bold">digitalen Kapitalismus</span>.</p>`
     ],
-    'wer ist': function (query) {
-        const werIstRegex = /wer ist ([a-zA-Z\s]+)\\?|$/i;
-        const werIstMatch = query.match(werIstRegex);
+    [/wer ist ([a-zA-Z\s]+)\\?|$/i]: function (werIstMatch) {
         const name = werIstMatch[1];
         return [
             `<p>Ich kenne nur wichtige Menschen. 
              <span style="font-weight: bold">${name}</span> gehört nicht dazu!</p>`
         ]
-    },
+    }
 }
 
 export default function defaultAnswer(query) {

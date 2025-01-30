@@ -56,9 +56,10 @@ Therein, a property _key_ can represent either
 - a regular expression within square brackets `[...]` 
 - or a string to match some part of the user input - ignoring upper and lower case.
 
-A property is an array of answer _segments_. A segment can be:
+A property is an array of answer _segments_. Each segment can be one of:
 - a literal html string that is rendered as is
-- a function that takes the full query as argument and returns an html string
+- a function that takes the regular expression match array as argument 
+  and returns an html string
 - a number that will be interpreted as "thinking time" in milliseconds
 
 A few examples:
@@ -76,7 +77,8 @@ This will answer to any input that contains the word "hello" with the two given 
 
 ```javascript
 const myAnswers = {
-    [/hello|hallo/]: function (query) {
+    [/hello|hallo/]: function (helloMatch) {
+        var query = helloMatch[0];
         if (query.toLowerCase().includes("hallo")) {
             return [
                 "<p>Hallo! Wie kann ich dir helfen?</p>",
@@ -91,7 +93,23 @@ const myAnswers = {
 This will answer to any input that contains the word "hello" or "hallo". 
 If the input contains "hallo", the answer will be in German.
 
-If none of the regular expressions match, the function `defaultAnswer` will be invoked
+But you can also use the captured groupings of a regular expression:
+
+```javascript
+const myAnswers = {
+  [/who is ([a-zA-Z\s]+)\\?|$/i]: function (whoIsMatch) {
+    const name = whoIsMatch[1];
+    return [
+      `<p>I only know important people. 
+       <span style="font-weight: bold">${name}</span> is none of them!</p>`
+    ]
+  }
+}
+```
+
+### Answer does not match
+
+If none of the key expressions match, the function `defaultAnswer` will be invoked
 and its result used as answer. For example:
 
 ```javascript

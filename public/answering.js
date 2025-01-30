@@ -9,21 +9,28 @@ export default function findAnswers(queryText) {
     }
 }
 
+function createRegex(key) {
+    const keyAsRegex = extractRegex(key);
+    if (keyAsRegex) {
+        return keyAsRegex;
+    }
+    return new RegExp(key, 'i')
+}
+
 function findMatchingKey(queryText) {
     return Object.keys(answers).find(function (key) {
-        const keyAsRegex = extractRegex(key);
-        if (keyAsRegex) {
-            return keyAsRegex.test(queryText);
-        }
-        const regex = new RegExp(key, 'i')
-        return regex.test(queryText);
+        const keyAsRegex = createRegex(key);
+        let match = queryText.match(keyAsRegex);
+        return match && match[0] !== "";
     });
 }
 
 function produceAnswer(matchingKey, queryText) {
     let answer = answers[matchingKey];
     if (answer instanceof Function) {
-        return answer(queryText);
+        let regex = createRegex(matchingKey);
+        const matchingArray = queryText.match(regex);
+        return answer(matchingArray);
     }
     return answer;
 }
