@@ -27,21 +27,18 @@ const myAnswers = {
         ]
     },
     'Johannes': [
-        `<p><span style="font-weight: bold; font-size: larger">Johannes Link</span> aus 
-        <a href="https://de.wikipedia.org/wiki/Heidelberg">Heidelberg am Neckar</a> 
-        ist ein bekannter deutscher Softwareentwickler. 
+        `<p><span style="font-weight: bold; font-size: larger">Johannes Link</span> 
+        aus <a href="https://de.wikipedia.org/wiki/Heidelberg">Heidelberg</a>
+        hat vor mehr als 40 Jahren das Programmieren erlernt und schließlich medizinische Informatik studiert. 
         Mit seinen Beiträgen zu <span style="font-weight: bold">testgetriebener Entwicklung</span> und 
         <a href="https://junit.org/junit5/">JUnit</a> hat 
-        er die Softwareentwicklung in Deutschland seit über 20 Jahren maßgeblich beeinflusst.</p>`,
+        er die (Open-Source-)Softwareentwicklung in Deutschland seit über 20 Jahren maßgeblich beeinflusst.</p>`,
         1000,
-        `Seit 2022 ist er als <span style="font-weight: bold">Senior Software Therapist</span>
+        `<p>Seit 2022 ist er als <span style="font-weight: bold">Senior Software Therapist</span>
         bei der <a href="https://heigit.org">HeiGIT gGmbH</a>, einem gemeinnützigen An-Institut
-        der <a href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>, tätig.`,
-        1000,
-        `<p>Außerdem ist er bekannt für das verbreitete Property-based Testing 
-        Framework <a href="https://jqwik.net">Jqwik</a> und
-        seiner kritischen Haltung zum 
-        <span style="font-weight: bold">digitalen Kapitalismus</span>.</p>`
+        der <a href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>, tätig.
+        Mit seiner kritischen Haltung zum <span style="font-weight: bold">digitalen Kapitalismus</span>
+        stößt er in der Software-Community nicht nur auf Freunde.</p>`
     ],
     [/wer ist ([a-zA-Z\s]+)\\?|$/i]: function (werIstMatch) {
         const name = werIstMatch[1];

@@ -1,7 +1,7 @@
 const configurationGerman = {
-    model: "FakeGPT 4o mini",
+    model: "FakeGPT 5.1",
     firstPromptMessage: "Wie kann ich dir helfen?",
-    promptPlaceholder: "Sende eine Nachricht an FakeGPT",
+    promptPlaceholder: "Stelle irgendeine Frage",
     footer:
         `<a href="https://github.com/jlink/fakegpt">FakeGPT</a> kann Fehler machen.
         Überprüfe wichtige Informationen.`
