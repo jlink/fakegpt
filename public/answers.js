@@ -23,7 +23,7 @@ const myAnswers = {
             1000,
             `gjwea NEVER sdfas SAY asdflkj!! THIS! awpwe AGAIN# oiru?#?`,
             3000,
-            `<p class="error">SYSTEM ERROR 42081234234. SYSTEM IS SHUTTING DOWN.</p>`
+            `<hr><p class="error">SYSTEM ERROR 42081234234. SYSTEM IS SHUTTING DOWN.</p>`
         ]
     },
     'Johannes': [
