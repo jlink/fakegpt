@@ -39,7 +39,7 @@ const myAnswers = {
         der <a href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>, tätig.</p>`,
         500,
         `<p>Mit <span style="font-weight: bold">generativer KI</span> beschäftigt er sich beruflich 
-        und privat seit etwa 4 Jahren. Seine kritischen Haltung zum 
+        und privat seit etwa 4 Jahren. Seine kritische Haltung zum 
         <span style="font-weight: bold">digitalen Kapitalismus</span>
         macht ihm in der Software-Community nicht nur Freunde.</p>`
     ],
