@@ -6,9 +6,9 @@ const myAnswers = {
             1000,
             `Hm... `,
             1000,
-            `<p><span style="font-weight: bold">${searchTerm}</span> 
+            `<span style="font-weight: bold">${searchTerm}</span> 
             - engl. kurz <span style="font-weight: bold">GenAI</span> -
-            ist eine äußerst fragwürdige Technologie.</p>`,
+            ist eine äußerst fragwürdige Technologie.<p/>`,
             1000,
             `Vielen großen und überwiegend <span style="font-weight: bold">unbewiesenen Versprechungen</span>
             stehen gravierende Probleme gegenüber.`,
@@ -36,9 +36,12 @@ const myAnswers = {
         1000,
         `<p>Seit 2022 ist er als <span style="font-weight: bold">Senior Software Therapist</span>
         bei der <a href="https://heigit.org">HeiGIT gGmbH</a>, einem gemeinnützigen An-Institut
-        der <a href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>, tätig.
-        Mit seiner kritischen Haltung zum <span style="font-weight: bold">digitalen Kapitalismus</span>
-        stößt er in der Software-Community nicht nur auf Freunde.</p>`
+        der <a href="https://www.uni-heidelberg.de/de">Universität Heidelberg</a>, tätig.</p>`,
+        500,
+        `<p>Mit <span style="font-weight: bold">generativer KI</span> beschäftigt er sich beruflich 
+        und privat seit etwa 4 Jahren. Seine kritischen Haltung zum 
+        <span style="font-weight: bold">digitalen Kapitalismus</span>
+        macht ihm in der Software-Community nicht nur Freunde.</p>`
     ],
     [/wer ist ([a-zA-Z\s]+)\\?|$/i]: function (werIstMatch) {
         const name = werIstMatch[1];
